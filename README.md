@@ -1,6 +1,10 @@
+# Introduction
+
+This project is an exercise to create an atproto client (such as BlueSky) using Dioxus, a cross-platform Rust framework.
+
 # Development
 
-Your new bare-bones project includes minimal organization with a single `main.rs` file and a few assets.
+This bare-bones project currently includes minimal organization with a single `main.rs` file and a few assets. It was setup using the default configurations, with the exception of 'true' for using Dioxus Router.
 
 ```
 project/
@@ -10,16 +14,18 @@ project/
 ├─ Cargo.toml # The Cargo.toml file defines the dependencies and feature flags for your project
 ```
 
-### Serving Your App
+### Serving the App
 
-Run the following command in the root of your project to start developing with the default platform:
+Run the following command in the root of the project to start developing with the default platform:
 
 ```bash
 dx serve
 ```
 
-To run for a different platform, use the `--platform platform` flag. E.g.
+To run on a specificplatform, use the `--platform platform` flag. E.g.
 ```bash
-dx serve --platform desktop
+dx serve --platform ios
+dx serve --platform android
+dx serve --platform web
 ```
 
