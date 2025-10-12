@@ -2,7 +2,7 @@
 name = "purplesky"
 version = "0.0.1"
 authors = ["ramonwest <ramon.west.software@gmail.com>"]
-edition = "2025"
+edition = "2021"
 
 [dependencies]
 dioxus = { version = "0.6.0", features = ["router"] }
