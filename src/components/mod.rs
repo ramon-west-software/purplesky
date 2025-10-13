@@ -1,5 +1,6 @@
 pub mod hero;
 pub mod home;
+pub mod login;
 pub mod navbar;
 pub mod profile;
 pub mod reels;
@@ -8,6 +9,7 @@ pub mod upload;
 
 pub use hero::Hero;
 pub use home::Home;
+pub use login::Login;
 pub use navbar::Navbar;
 pub use profile::Profile;
 pub use reels::Reels;
