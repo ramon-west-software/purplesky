@@ -1,21 +1,9 @@
 use dioxus::prelude::*;
 use reqwest::Client;
-use serde::{Deserialize, Serialize};
-
-#[derive(Serialize)]
-struct LoginRequest<'a> {
-    identifier: &'a str,
-    password: &'a str,
-}
-
-#[derive(Deserialize)]
-struct LoginResponse {
-    accessJwt: String,
-    // you can also deserialize did, handle, refreshJwt, etc.
-}
+use crate::auth::{AuthState, LoginRequest, LoginResponse}; // 👈 import this from your auth.rs
 
 #[component]
-pub fn Login(on_login: EventHandler<String>) -> Element {
+pub fn Login(on_login: EventHandler<AuthState>) -> Element {
     let mut username = use_signal(|| String::new());
     let mut password = use_signal(|| String::new());
     let mut loading = use_signal(|| false);
@@ -43,7 +31,13 @@ pub fn Login(on_login: EventHandler<String>) -> Element {
                 Ok(r) => {
                     if r.status().is_success() {
                         match r.json::<LoginResponse>().await {
-                            Ok(body) => on_login.call(body.accessJwt),
+                            Ok(body) => {
+                                let state = AuthState {
+                                    token: body.access_jwt,
+                                    handle: body.handle,
+                                };
+                                on_login.call(state);
+                            }
                             Err(e) => error.set(Some(format!("Failed to parse response: {}", e))),
                         }
                     } else if r.status().as_u16() == 401 {
@@ -57,7 +51,10 @@ pub fn Login(on_login: EventHandler<String>) -> Element {
                         )));
                     }
                 }
-                Err(e) => error.set(Some(format!("Login failed. Unable to reach the atproto authenticator service. Error: {}", e))),
+                Err(e) => error.set(Some(format!(
+                    "Login failed. Unable to reach the atproto authenticator service. Error: {}",
+                    e
+                ))),
             }
             loading.set(false);
         });

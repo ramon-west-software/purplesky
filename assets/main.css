@@ -121,7 +121,7 @@ body {
 .login-page button {
   padding: 0.75rem;
   font-size: 1rem;
-  background-color: #91a4d2;
+  background-color: #937fde;
   color: #0f1116;
   border: none;
   border-radius: 5px;
@@ -147,4 +147,102 @@ body {
   font-size: 0.9rem;
   text-align: center;
   margin-top: -0.5rem;
+}
+
+/* ========================= */
+/* Profile Page Styling      */
+/* ========================= */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full screen height */
+  background-color: #0f1116;
+}
+
+.profile-header {
+  background-color: #13161f;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #2a2d36;
+}
+
+.profile-header h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #91a4d2;
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.profile-header button {
+  background-color: #937fde;
+  color: #0f1116;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.profile-header button:hover {
+  background-color: #a7b8e5;
+}
+
+.profile-header button:active {
+  transform: scale(0.97);
+}
+
+.profile-page {
+  max-width: 800px;
+  margin: 2rem auto; /* centered card below header */
+  padding: 2rem;
+  background-color: #181b24;
+  border: 1px solid #2a2d36;
+  border-radius: 12px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.profile-content p {
+  font-size: 1rem;
+  color: #d3d3d3;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.profile-actions button {
+  padding: 0.6rem 1.2rem;
+  background-color: #937fde;
+  color: #0f1116;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.profile-actions button:hover {
+  background-color: #a7b8e5;
+}
+
+.profile-actions button:active {
+  transform: scale(0.97);
 }
