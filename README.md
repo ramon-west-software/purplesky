@@ -41,3 +41,10 @@ dx serve --platform web
 ### v0.0.2
 - login (using atproto auth service)
 - navbar (bare-bone pages for Home, Search, Upload, Reels, and Profile)
+
+### v0.0.3
+- create `auth.rs` file with `AuthSessionManager` and `AuthState` structs.
+- refactor `login.rs` to use new `auth.rs` structs
+- use `AuthSessionManager` to access user handle in `profile.rs`
+
+
