@@ -47,4 +47,10 @@ dx serve --platform web
 - refactor `login.rs` to use new `auth.rs` structs
 - use `AuthSessionManager` to access user handle in `profile.rs`
 
+## v0.0.4
+- fetch user profile data 
+- add user profile card in profile component
 
+## v0.0.5
+- add app icon asset
+- update to dx 0.7.1
