@@ -5,7 +5,7 @@ use dioxus::prelude::*;
 #[component]
 pub fn Profile() -> Element {
     let session_manager = use_context::<Signal<AuthSessionManager>>();
-    let use_effect_account = session_manager.read().active_account().cloned();
+    let session_account = session_manager.read().active_account().cloned();
     let rsx_account = session_manager.read().active_account().cloned();
 
     // make the signals `mut` because we call `.set()` on them
@@ -15,7 +15,7 @@ pub fn Profile() -> Element {
 
     // Fetch user profile when the component mounts
     use_effect(move || {
-        if let Some(acc) = use_effect_account.clone() {
+        if let Some(acc) = session_account.clone() {
             let mut profile_data = profile_data.clone();
             let mut loading = loading.clone();
             let mut error = error.clone();
@@ -39,14 +39,6 @@ pub fn Profile() -> Element {
 
     rsx! {
         div { class: "profile-container",
-
-            div { class: "profile-header",
-                if let Some(acc) = rsx_account.clone() {
-                    h2 { "@{acc.handle}" }
-                } else {
-                    h2 { "Unknown" }
-                }
-            }
 
             div {
                 if *loading.read() {
