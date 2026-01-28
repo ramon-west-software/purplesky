@@ -28,8 +28,14 @@ fn App() -> Element {
         if session_manager.read().active_account().is_none() {
              Login { on_login: move |auth_state| session_manager.write().add_account(auth_state) }
         } else {
+            div { class: "profile-header",
+                if let Some(acc) = session_manager.read().active_account() {
+                    h2 { "@{acc.handle}" }
+                } else {
+                    h2 { "Unknown" }
+                }
+            }
             Router::<Route> {}
         }
     }
 }
-
